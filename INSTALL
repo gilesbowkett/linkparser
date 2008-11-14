@@ -22,7 +22,8 @@ distribute a file known to need patching, so he forked the library and put it on
 githubs. If you're a C wizard, look at updating the link-grammar version. The
 distribution included here isn't really link-grammar 4.3.5; it's a fork of link-grammar
 4.3.5, with some minor changes. Giles is not actually clever enough to tell you what
-those changes are.
+those changes are, although he applied them by hand and can help you if you have install
+questions.
 
 Now build, test, and install the Ruby library:
 
