@@ -17,8 +17,11 @@
 == General Information
 
 This module is a Ruby binding for the link-grammar library, a syntactic parser
-of English. 
+of English.
 
+This is a fork of a library found here: http://deveiate.org/projects/Ruby-LinkParser
+
+I forked it purely for ease of installation. See INSTALL for detail.
 
 === Example Usage
 
