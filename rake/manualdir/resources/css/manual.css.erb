@@ -1,0 +1,594 @@
+/* 
+ *	<%=  Manual Stylesheet
+ *	$Id: manual.css.erb 40 2008-08-27 21:58:00Z deveiant $
+ *	Time-stamp: <06-Sep-2004 15:09:35 ged>
+ */
+
+/* Start with Blueprint screen */
+/*@import url(screen.css);*/
+@import url(deveiate.css);
+
+/* Uses the "Brazilian Red Cap" Palette from COLOURlovers:
+ *   http://www.colourlovers.com/palette/91529/Brazilian_Red_Cap
+ * 
+ * RGB: 240, 24, 24
+ * Hex: #F01818
+ * 
+ * RGB: 144, 0, 0
+ * Hex: #900000
+ * 
+ * RGB: 243, 243, 243
+ * Hex: #F3F3F3
+ * 
+ * RGB: 72, 72, 96
+ * Hex: #484860
+ * 
+ * RGB: 120, 120, 144
+ * Hex: #787890
+ * 
+ */
+
+body {
+	margin: 0;
+	padding: 2em 4em;
+	font: 14px/1.2em "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+	background: #f3f3f3;
+	color: #333;
+	border-left: 5px solid #ca2f1b;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+	color: #484860;
+}
+h1,h2,h3 {
+	text-shadow: #a7a7a7 1px 1px 2px;
+}
+h1 {
+	font-size: 3em;
+	margin: 0.5em 0 0;
+	color: #ca2f1b;
+	text-shadow: #999 2px 2px 3px;
+}
+h2 {
+	font-size: 2em;
+	margin: 1em 0 0;
+}
+h3 {
+	font-size: 1.5em;
+	margin: 1em 0 0;
+}
+h4 {
+	font-size: 1.25em;
+	margin: 1em 0 0;
+}
+
+p, ul {
+	line-height: 1.5;
+}
+
+li {
+	margin: 0.5em 0;
+}
+
+acronym, abbr {
+	border-bottom: 1px dotted #666;
+}
+
+a {
+	color: #791707;
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+
+dl {
+	margin: 1em 2em;
+}
+dl dt {
+	font-weight: bold;
+	border: 1px solid #ccc;
+	background-color: #e7e7e7;
+	color: #484860;
+	padding: 4px;
+}
+dd {
+	padding: 4px;
+	margin: 0 0 0.5em;
+}
+dd.format {
+	color: #791707;
+	background: #ddd;
+	padding: 2px 10px;
+}
+
+dt + dd {
+	margin-top: 0.25em;
+}
+dd + dt {
+	margin-top: 1em;
+}
+
+code {
+	background: #ddd;
+}
+
+table {
+	margin: 1em;
+	background-color: #fff;
+	border-collapse: collapse;
+}
+th {
+	color: white;
+	background: #484860;
+}
+tr {}
+td, th {
+	padding: 4px;
+	border: 1px solid #484860;
+}
+
+div.screenshot {
+	margin: 1em 3em;
+}
+div.screenshot img {
+}
+
+/* @group Generic Classes */
+.todo {
+}
+/* @end Generic Classes */
+
+/* @group Examples */
+div.caption {
+	font-size: 12px;
+	text-align: center;
+	padding: 0.25em 0;
+	border-top: 1px solid #787890;
+}
+div.example {
+	border: 3px solid #787890;
+	margin: 0.5em 1em;
+	padding: 0;
+	font: 14px Monaco, Profont, "Andale Mono", mono;
+}
+div.example pre {
+	line-height: 1.2em;
+	margin: 0;
+	padding: 0;
+}
+
+pre.deveiate .line-numbers {
+	background-color: #474860;
+	color: #f3f3f3;
+}
+
+/* @group CodeRay highlighting */
+.CodeRay {}
+
+.CodeRay pre {}
+
+span.CodeRay {
+	white-space: pre;
+	border: 0px;
+	padding: 2px
+}
+
+table.CodeRay {
+	border-collapse: collapse;
+	width: 100%;
+	padding: 2px
+}
+
+table.CodeRay td {
+	padding: 2px 4px;
+	vertical-align: top
+}
+
+.CodeRay .line_numbers, .CodeRay .no {
+	background-color: #ededed;
+	color: gray;
+	text-align: right;
+}
+
+.CodeRay .line_numbers tt {
+	font-weight: bold
+}
+
+.CodeRay .no {
+	padding: 0px 4px
+}
+.CodeRay .no strong {
+	font-weight: bold;
+	color: #555;
+}
+
+.CodeRay .code {
+	width: 100%
+}
+
+ol.CodeRay {
+	font-size: 10pt
+}
+
+ol.CodeRay li {
+	white-space: pre
+}
+
+.CodeRay .af {
+	color: #00C
+}
+
+.CodeRay .an {
+	color: #007
+}
+
+.CodeRay .av {
+	color: #700
+}
+
+.CodeRay .aw {
+	color: #C00
+}
+
+.CodeRay .bi {
+	color: #509;
+	font-weight: bold
+}
+
+.CodeRay .c {
+	background: #cdd;
+	color: #669;
+}
+
+.CodeRay .ch {
+	color: #04D
+}
+
+.CodeRay .ch .k {
+	color: #04D
+}
+
+.CodeRay .ch .dl {
+	color: #039
+}
+
+.CodeRay .cl {
+	color: #c63c36;
+	font-weight: bold
+}
+
+.CodeRay .co {
+	color: #036;
+	font-weight: bold
+}
+
+.CodeRay .cr {
+	color: #0A0
+}
+
+.CodeRay .cv {
+	color: #369
+}
+
+.CodeRay .df {
+	color: #099;
+	font-weight: bold
+}
+
+.CodeRay .di {
+	color: #088;
+	font-weight: bold
+}
+
+.CodeRay .dl {
+	color: black
+}
+
+.CodeRay .do {
+	color: #970
+}
+
+.CodeRay .ds {
+	color: #D42;
+	font-weight: bold
+}
+
+.CodeRay .e {
+	color: #666;
+	font-weight: bold
+}
+
+.CodeRay .en {
+	color: #800;
+	font-weight: bold
+}
+
+.CodeRay .er {
+	color: #F00;
+	background-color: #FAA
+}
+
+.CodeRay .ex {
+	color: #F00;
+	font-weight: bold
+}
+
+.CodeRay .fl {
+	color: #60E;
+	font-weight: bold
+}
+
+.CodeRay .fu {
+	color: #06B;
+	font-weight: bold
+}
+
+.CodeRay .gv {
+	color: #d70;
+	font-weight: bold
+}
+
+.CodeRay .hx {
+	color: #058;
+	font-weight: bold
+}
+
+.CodeRay .i {
+	color: #00D;
+	font-weight: bold
+}
+
+.CodeRay .ic {
+	color: #B44;
+	font-weight: bold
+}
+
+.CodeRay .il {
+	background: #eee
+}
+
+.CodeRay .il .il {
+	background: #ddd
+}
+
+.CodeRay .il .il .il {
+	background: #ccc
+}
+
+.CodeRay .il .idl {
+	font-weight: bold;
+	color: #888
+}
+
+.CodeRay .in {
+	color: #B2B;
+	font-weight: bold
+}
+
+.CodeRay .iv {
+	color: #33B
+}
+
+.CodeRay .la {
+	color: #970;
+	font-weight: bold
+}
+
+.CodeRay .lv {
+	color: #963
+}
+
+.CodeRay .oc {
+	color: #40E;
+	font-weight: bold
+}
+
+.CodeRay .on {
+	color: #000;
+	font-weight: bold
+}
+
+.CodeRay .op {
+	
+}
+
+.CodeRay .pc {
+	color: #038;
+	font-weight: bold
+}
+
+.CodeRay .pd {
+	color: #369;
+	font-weight: bold
+}
+
+.CodeRay .pp {
+	color: #579
+}
+
+.CodeRay .pt {
+	color: #339;
+	font-weight: bold
+}
+
+.CodeRay .r {
+	color: #080;
+	font-weight: bold
+}
+
+.CodeRay .rx {
+	background-color: #fff0ff
+}
+
+.CodeRay .rx .k {
+	color: #808
+}
+
+.CodeRay .rx .dl {
+	color: #404
+}
+
+.CodeRay .rx .mod {
+	color: #C2C
+}
+
+.CodeRay .rx .fu {
+	color: #404;
+	font-weight: bold
+}
+
+.CodeRay .s {
+	background: rgba(240,240,240,0.5);
+}
+
+.CodeRay .s  .k {
+	color: #666;
+}
+
+.CodeRay .s  .dl {
+	color: #710;
+}
+
+.CodeRay .sh {
+	background-color: #f0fff0
+}
+
+.CodeRay .sh .k {
+	color: #2B2
+}
+
+.CodeRay .sh .dl {
+	color: #161
+}
+
+.CodeRay .sy {
+	color: #A60
+}
+
+.CodeRay .sy .k {
+	color: #A60
+}
+
+.CodeRay .sy .dl {
+	color: #630
+}
+
+.CodeRay .ta {
+	color: #070
+}
+
+.CodeRay .tf {
+	color: #070;
+	font-weight: bold
+}
+
+.CodeRay .ts {
+	color: #D70;
+	font-weight: bold
+}
+
+.CodeRay .ty {
+	color: #339;
+	font-weight: bold
+}
+
+.CodeRay .v {
+	color: #036
+}
+
+.CodeRay .xt {
+	color: #444
+}
+/* @end CodeRay */
+/* @end Examples */
+
+
+
+/* @group Template node-display classes */
+.node-tree {
+    border: 1px dotted #333;
+    margin: 2px;
+    padding: 4px;
+    background: #999;
+}
+
+.node-subtree {
+    border: 1px dotted #666;
+    padding: 4px 8px;
+    margin: 1px 4px;
+    background: #CCC;
+}
+
+.node-subtree-head {
+    color: #333;
+}
+
+.node {
+    border: 1px solid black;
+    margin-bottom: 4px;
+}
+
+.node-head {
+    border-bottom: 1px solid black;
+    font-weight: bold;
+    font-variant: small-caps;
+    padding: 2px;
+    color: black;
+    background: #f3f3f3;
+}
+
+.node-body {
+    background: #e3e3e3;
+    padding: 2px 4px 4px 4px;
+}
+
+.node-subtemplate {
+    background: #999;
+    border: 1px dotted #333;
+    margin: 2px;
+    padding: 4px;
+}
+
+.text-node-body {
+    background: #CCC;
+    font-family: "Andale Mono", "ProFont", "Monotype.com", fixed;
+}
+.call-directive-node-body,
+.attr-directive-node-body { background: #CDC; }
+.escape-directive-node-body { background: #DCC; }
+.yield-directive-node-body { background: #DDC; }
+.if-directive-node-body,
+.else-directive-node-body,
+.elsif-directive-node-body { background: #BCD; }
+/* @end */
+
+/* @group Template syntax-highlighted html classes */
+.highlighted-source {
+    border: 1px dotted #333;
+    margin: 2px;
+    padding: 10px;
+    background: #ccc;
+}
+
+.token {
+    font-family: "Vera Sans Mono", "Andale Mono", fixed;
+    color: #333;
+}
+
+.text-token { color: #666; }
+.comment-token { color: #666; background: #cdc; }
+.doc-type-token { color: #226; background: #ccd; }
+
+.tag-token { color: #242; background: #b9b9b9; }
+.tag-token-name { color: #272; }
+.tag-token-attr-name { color: #262; }
+.tag-token-attr-value { color: #333; }
+
+.processing-instruction-token,
+.tag-attr-directive {
+    color: #933;
+    background: #dcc;
+    font-weight: bold;
+}
+/* @end */
+

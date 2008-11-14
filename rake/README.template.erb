@@ -1,0 +1,19 @@
+= <%= settings['project_name'] %>
+
+<%= settings['project_name'] %> is <%= 
+	settings['project_summary'].sub( /^([A-Z])/ ) { $1.downcase } %>. 
+
+<%= settings['project_description'] %> 
+
+In the meantime, you can check out the current development source with Subversion from the 
+following URL:
+
+    svn://deveiate.org/<%= settings['project_name'].gsub( /\s+/, '' ) %>/trunk
+
+The project page is also likely to have more details:
+
+    <%= settings['project_homepage'] %>
+
+== License
+
+See the LICENSE file in the same directory for licensing details.

@@ -1,0 +1,67 @@
+# The file that lists all the settings required to build a rakefile for a project. The values 
+# configure the prompts that will be given to the user when creating the Rakefile.
+- project_name: Project name
+- project_homepage:
+    prompt: URL of project page
+    validator: URI.parse( args.first )
+    stringify: true
+- project_summary: Project summary
+- project_description:
+    prompt: Project description
+    multiline: true
+    post-process: "args.join(\"\n\")"
+
+- author_name: Your name
+- author_email: Your email address
+
+- project_dependencies:
+    prompt: "Runtime dependencies (<gemname>: <gem_version_spec>)"
+    multiline: true
+    post-process: |-
+        pairs = args.collect {|line|
+            if line.is_a?( Hash )
+                line
+            else
+                gem, version = line.split(/:\s*/, 2)
+                [gem, version||'>=0']
+            end
+        }.flatten
+        Hash[ *pairs ]
+                
+- dev_dependencies:
+    prompt: "Development dependencies (<gemname>: <gem_version_spec>)"
+    multiline: true
+    post-process: |-
+        pairs = args.collect {|line|
+            if line.is_a?( Hash )
+                line
+            else
+                gem, version = line.split(/:\s*/, 2)
+                [gem, version||'>=0']
+            end
+        }.flatten
+        Hash[ *pairs ]
+                
+- project_requirements:
+    prompt: "Project requirements (<software>: <version>)"
+    multiline: true
+    post-process: |-
+        pairs = args.collect {|line|
+            if line.is_a?( Hash )
+                line
+            else
+                gem, version = line.split(/:\s*/, 2)
+                [gem, version||'>=0']
+            end
+        }.flatten
+        Hash[ *pairs ]
+
+- rubyforge_group: Rubyforge Group
+- rubyforge_project: Rubyforge Project Name
+
+- additional_pkgfiles:
+    multiline: true
+    prompt: Additional files to add to the distribution (globs work)
+
+- version_file:
+    prompt: File to read the project version from, relative to the lib/ directory

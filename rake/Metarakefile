@@ -1,0 +1,198 @@
+#!/usr/bin/env rake
+#  
+# A rakefile for creating/updating project Rakefiles
+# $Id: Metarakefile 58 2008-10-08 18:57:11Z deveiant $
+# 
+# Author: Michael Granger <ged@FaerieMUD.org>
+# 
+
+require 'pathname'
+require 'erb'
+require 'etc'
+require 'yaml'
+
+require 'rake/rdoctask'
+require 'rake/testtask'
+require 'rake/packagetask'
+require 'rake/clean'
+
+tasklibdir = Pathname.new( __FILE__ ).dirname.relative_path_from( Pathname.getwd )
+require "#{tasklibdir}/helpers"
+
+$trace = Rake.application.options.trace ? true : false
+$dryrun = Rake.application.options.dryrun ? true : false
+
+VERSION = '1.0.0' unless defined?( VERSION )
+
+#####################################################################
+###	C O N S T A N T S
+#####################################################################
+
+TASKLIBDIR            = Pathname.new( __FILE__ ).dirname.relative_path_from( Pathname.getwd )
+TARGETDIR             = Pathname.getwd
+
+RAKEFILE_TEMPLATE     = TASKLIBDIR + 'Rakefile.template.erb'
+SETTINGS_QUESTIONS    = TASKLIBDIR + 'settings-questions.yml'
+
+PROJECT_SETTINGS_FILE = TARGETDIR + 'project.yml'
+RAKEFILE              = TARGETDIR + 'Rakefile'
+
+LICENSE_TEMPLATE      = TASKLIBDIR + 'LICENSE.template.erb'
+LICENSE               = TARGETDIR + 'LICENSE'
+
+README_TEMPLATE       = TASKLIBDIR + 'README.template.erb'
+README                = TARGETDIR + 'README'
+
+
+#####################################################################
+###	H E L P E R   F U N C T I O N S
+#####################################################################
+
+######
+public
+######
+
+### Prompt the user for answers to the questions described in the given +questionsfile+, which
+### is a YAML file containing an Array of Hashes of the form:
+###   {
+###       '<settingname>' => {
+###           'prompt' => '<prompt question>',
+###           'validator' => '<code to eval to validate the user's answer in the variable "args">'
+###           'multiline' => true or false,
+###       }
+###   }
+### The value can also be a simple string, which is shorthand for { 'prompt' => 'string' }
+def build_settings_hash( questionsfile, defaults )
+	settings = {}
+	
+	questions = YAML.load_file( questionsfile )
+	trace "Questions are:\n%p" % [ questions ]
+	
+	questions.inject( settings ) do |h, question|
+		field, answer = self.prompt_user_for_setting( question, defaults[question.keys.first] )
+		h[ field ] = answer
+		h
+	end
+	
+	return settings
+end
+
+
+### Prompt the user with the given +question_+ and return the field name and the user's answer.
+def prompt_user_for_setting( question, default )
+	trace "Prompting user using %p" % [ question ]
+	field, promptconfig = question.to_a.flatten
+	trace " %p, %p" % [ field, promptconfig ]
+	
+	prompttext       = nil
+	validation_block = lambda {|*args| args.first }
+	multiline        = false
+	answer           = nil
+	postproc         = nil
+	
+	# Configure the prompt from the question Hash or String
+	case promptconfig
+	when String
+		prompttext = promptconfig
+
+	when Hash
+		prompttext = promptconfig['prompt']
+		validation_block = eval( "lambda {|*args| #{promptconfig['validator']}}") if
+			promptconfig.key?( 'validator' )
+		multiline = promptconfig['multiline']
+		postproc = eval( "lambda {|*args| #{promptconfig['post-process']}}") if
+			promptconfig.key?( 'post-process' )
+
+	else
+		return field, promptconfig
+		fail "Unhandled question type %p (%s)" % [ question, field ]
+	end
+
+	# Ask the user for input
+	if multiline
+		trace "  prompting for multiline input"
+		begin
+			answer = prompt_for_multiple_values( prompttext, default )
+		end until validation_block.call( answer )
+		answer = postproc.call( *answer ) if postproc
+	else
+		trace "  prompting for single-line input"
+		if default
+			answer = prompt_with_default( prompttext, default, &validation_block )
+		else
+			answer = prompt( prompttext, &validation_block )
+		end
+	end
+
+	return field, answer
+end
+
+
+
+#####################################################################
+###	T A S K S
+#####################################################################
+
+task :default => [ RAKEFILE, LICENSE, README ]
+
+
+### Main task: build the Rakefile by merging values from the project settings file with the 
+### Rakefile template.
+desc "Generate a new project Rakefile in the current directory"
+task RAKEFILE.to_s => [ RAKEFILE_TEMPLATE, PROJECT_SETTINGS_FILE ] do
+	template = ERB.new( RAKEFILE_TEMPLATE.read, nil, '<>' )
+	settings = YAML.load_file( PROJECT_SETTINGS_FILE )
+
+	output = template.result( binding() )
+	RAKEFILE.open( File::WRONLY|File::CREAT|File::TRUNC ) do |fh|
+		fh.print output
+	end
+end
+
+CLOBBER.include( RAKEFILE )
+
+
+### Task: Build a LICENSE file
+desc "Generate a new project LICENSE file in the current directory"
+task LICENSE.to_s => [ LICENSE_TEMPLATE, PROJECT_SETTINGS_FILE ] do
+	template = ERB.new( LICENSE_TEMPLATE.read, nil, '<>' )
+	settings = YAML.load_file( PROJECT_SETTINGS_FILE )
+
+	output = template.result( binding() )
+	LICENSE.open( File::WRONLY|File::CREAT|File::TRUNC ) do |fh|
+		fh.print output
+	end
+end
+
+
+### Task: Build a README file
+desc "Generate a new project README file in the current directory"
+task README.to_s => [ README_TEMPLATE, PROJECT_SETTINGS_FILE ] do
+	template = ERB.new( README_TEMPLATE.read, nil, '<>' )
+	settings = YAML.load_file( PROJECT_SETTINGS_FILE )
+
+	output = template.result( binding() )
+	README.open( File::WRONLY|File::CREAT|File::TRUNC ) do |fh|
+		fh.print output
+	end
+end
+
+
+### File tasks
+file RAKEFILE_TEMPLATE.to_s
+file PROJECT_SETTINGS_FILE.to_s
+task PROJECT_SETTINGS_FILE.to_s => SETTINGS_QUESTIONS do
+	defaults = {}
+	if PROJECT_SETTINGS_FILE.exist?
+		defaults = YAML.load_file( PROJECT_SETTINGS_FILE )
+	end
+	
+	settings = build_settings_hash( SETTINGS_QUESTIONS, defaults )
+	PROJECT_SETTINGS_FILE.open( File::WRONLY|File::TRUNC|File::CREAT ) do |fh|
+		fh.print( YAML.dump(settings) )
+	end
+end
+
+CLOBBER.include( PROJECT_SETTINGS_FILE )
+
+

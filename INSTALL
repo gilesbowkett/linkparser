@@ -1,0 +1,32 @@
+These instructions assume a UNIX or UNIX-like environment. This includes OS X;
+it's built successfully on a Intel Core 2 Duo MacBook. We're not sure how to get
+this to build under Windows. Suggestions welcomed.
+
+First, you'll need the 'mkrf' library to build the C extension if you don't already 
+have it installed. It's as simple as:
+
+  $ sudo gem install mkrf
+
+Once you have that installed, install the Abiword link-grammar library 
+that comes with this source:
+
+  $ tar -xvzf link-grammar-4.3.5.tar.gz
+  $ cd link-grammar-4.3.5
+  $ ./configure; make; sudo make install
+  $ cd ..
+
+A note about the link-grammar library: it's not the latest version. Giles forked this
+project because the original project required you to run patch and provided a copy-paste
+patch command that didn't work on his box. It seemed completely fucking insane to
+distribute a file known to need patching, so he forked the library and put it on the
+githubs. If you're a C wizard, look at updating the link-grammar version. The
+distribution included here isn't really link-grammar 4.3.5; it's a fork of link-grammar
+4.3.5, with some minor changes. Giles is not actually clever enough to tell you what
+those changes are.
+
+Now build, test, and install the Ruby library:
+
+  $ rake
+  $ sudo rake install
+
+That's it!

@@ -1,0 +1,180 @@
+pre.deveiate .WebgenPluginParameters {
+   color: #DCDC8A;
+}
+pre.deveiate .WebgenPlugin {
+   color: #D9DE00;
+}
+pre.deveiate .DiffInserted {
+   background-color: #253B22;
+   color: #F8F8F8;
+}
+pre.deveiate .DiffHeader {
+   background-color: #0E2231;
+   color: #F8F8F8;
+   font-style: italic;
+}
+pre.deveiate .CssPropertyValue {
+   color: #F9EE98;
+}
+pre.deveiate .CCCPreprocessorDirective {
+   color: #AFC4DB;
+}
+pre.deveiate .Constant {
+   color: #98E8C5;
+}
+pre.deveiate .DiffChanged {
+   background-color: #4A410D;
+   color: #F8F8F8;
+}
+pre.deveiate .EmbeddedSource {
+   background-color: #A2A5AD;
+}
+pre.deveiate .RubyConstant {
+   font-weight: bold;
+   color: #76A3D7;
+}
+pre.deveiate .Support {
+   color: #9B859D;
+}
+pre.deveiate .MarkupList {
+   color: #F9EE98;
+}
+pre.deveiate .CssConstructorArgument {
+   color: #8F9D6A;
+}
+pre.deveiate .Storage {
+   color: #F9EE98;
+}
+pre.deveiate .line-numbers {
+   background-color: #97FF00;
+   color: #000000;
+}
+pre.deveiate .CssClass {
+   color: #9B703F;
+}
+pre.deveiate .StringConstant {
+   color: #DDF2A4;
+}
+pre.deveiate .CssAtRule {
+   color: #8693A5;
+}
+pre.deveiate .MetaTagInline {
+   color: #81BE9A;
+}
+pre.deveiate .XmlPreprocessingAttributes {
+   color: #F6F590;
+}
+pre.deveiate .MarkupHeading {
+   color: #CF6A4C;
+}
+pre.deveiate .CssTagName {
+   color: #CDA869;
+}
+pre.deveiate .SupportConstant {
+   color: #CF6A4C;
+}
+pre.deveiate .RubyClass {
+   font-weight: bold;
+   background-color: #7B7B95;
+   color: #DFD50A;
+}
+pre.deveiate .DiffDeleted {
+   background-color: #420E09;
+   color: #F8F8F8;
+}
+pre.deveiate .XmlPreprocessingDirective {
+   font-weight: bold;
+   color: #E1D031;
+}
+pre.deveiate .CCCPreprocessorLine {
+   color: #8996A8;
+}
+pre.deveiate .StringRegexpSpecial {
+   color: #CF7D34;
+}
+pre.deveiate .EmbeddedSourceBright {
+   font-weight: bold;
+   background-color: #9A9BA4;
+}
+pre.deveiate .InvalidIllegal {
+   background-color: #150B25;
+   color: #F8F8F8;
+}
+pre.deveiate .SupportFunction {
+   color: #DAD085;
+}
+pre.deveiate .RubyInstanceVariable {
+   color: #C2EAF4;
+}
+pre.deveiate .CssAdditionalConstants {
+   color: #CA7840;
+}
+pre.deveiate .MetaTagAll {
+   color: #92D7AE;
+}
+pre.deveiate .StringRegexp {
+   color: #E9C062;
+}
+pre.deveiate .StringEmbeddedSource {
+   color: #DAEFA3;
+}
+pre.deveiate .EntityInheritedClass {
+   color: #9B5C2E;
+   font-style: italic;
+}
+pre.deveiate {
+   background-color: #000015;
+   color: #EBEAC7;
+}
+pre.deveiate .SwigPreprocessor {
+   font-weight: bold;
+   color: #53B98F;
+}
+pre.deveiate .CssId {
+   color: #8B98AB;
+}
+pre.deveiate .CssPseudoClass {
+   color: #8F9D6A;
+}
+pre.deveiate .StringVariable {
+   color: #8A9A95;
+}
+pre.deveiate .String {
+   color: #DA8D53;
+}
+pre.deveiate .Keyword {
+   color: #00CBCD;
+}
+pre.deveiate .EvenTabs {
+   background-color: #060617;
+   color: #A0A0BB;
+}
+pre.deveiate .WebgenMetadataHeader {
+   background-color: #00002C;
+   color: #B7EBE3;
+   font-style: italic;
+}
+pre.deveiate .CssPropertyName {
+   color: #C5AF75;
+}
+pre.deveiate .DoctypeXmlProcessing {
+   background-color: #3E3E33;
+   color: #E1D026;
+}
+pre.deveiate .RubyInheritedClass {
+   color: #EAE596;
+}
+pre.deveiate .InvalidDeprecated {
+   color: #D2A8A1;
+   font-style: italic;
+}
+pre.deveiate .Variable {
+   color: #9BDA8B;
+}
+pre.deveiate .Entity {
+   color: #B1F79E;
+}
+pre.deveiate .Comment {
+   font-weight: bold;
+   color: #971912;
+}
